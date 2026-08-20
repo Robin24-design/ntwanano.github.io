@@ -1,35 +1,146 @@
+/* Updated style.css — added colors, gradients, and imagery to portray a software engineer
+   Notes:
+   - Header now uses a coding/laptop hero image (external Unsplash URL). Replace with a local image in /images/ if you prefer.
+   - Added avatar/engineer-photo helper classes for pictures portraying a developer.
+   - Introduced accent CSS variables for consistent color theming.
+   - Improved section/cards, code block, and skill-badge styling to match a dev portfolio feel.
+*/
+
+:root{
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --text:#2b2b2b;
+  --muted:#6b7280;
+  --accent:#0b74ff; /* blue */
+  --accent-2:#00c2a8; /* teal */
+}
+
 body{
-font-family: Arial, sans-serif;
-margin:0;
-background:#f4f4f4;
-color:#333;
+  font-family: Arial, Helvetica, sans-serif;
+  margin:0;
+  background: linear-gradient(180deg,var(--bg) 0%, #eef6ff 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
 }
 
-
+/* Header with a coding hero image + gradient overlay */
 header{
-background:#222;
-color:white;
-padding:40px;
-text-align:center;
+  background: linear-gradient(rgba(10,10,10,0.45), rgba(10,10,10,0.25)),
+              url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  color: white;
+  padding:60px 20px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
 }
 
+header h1{
+  margin:0;
+  font-size:2.2rem;
+  letter-spacing:0.6px;
+}
 
+header p{
+  margin:0;
+  color:rgba(255,255,255,0.9);
+  max-width:900px;
+}
+
+/* small developer avatar that can be placed in the header or an about section */
+.avatar{
+  width:96px;
+  height:96px;
+  border-radius:12px;
+  border:3px solid rgba(255,255,255,0.15);
+  background: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80') center/cover no-repeat;
+  box-shadow: 0 6px 18px rgba(11,18,40,0.35);
+}
+
+/* Section cards */
 section{
-background:white;
-margin:20px;
-padding:25px;
-border-radius:10px;
+  background:var(--card);
+  margin:20px auto;
+  padding:28px;
+  border-radius:12px;
+  max-width:1000px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+  border: 1px solid rgba(11,22,50,0.03);
 }
-
 
 h2{
-color:#0066cc;
+  color:var(--accent);
+  margin-top:0;
 }
 
+/* Engineer photo helper — use as a block hero inside sections */
+.engineer-photo{
+  height:220px;
+  border-radius:8px;
+  background: linear-gradient(180deg, rgba(11,116,255,0.06), rgba(0,194,168,0.03)),
+              url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  margin:14px 0;
+  box-shadow: 0 8px 20px rgba(11,18,40,0.06);
+}
 
+/* Skills badges — typical developer tags */
+.skills{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.skill-badge{
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:white;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:0.85rem;
+  box-shadow: 0 4px 12px rgba(11,116,255,0.12);
+}
+
+/* Code snippet styling to give a devy feel */
+pre, code{
+  font-family: Consolas, 'Courier New', monospace;
+}
+
+pre{
+  background:#0b1220;
+  color:#cfe8ff;
+  padding:18px;
+  border-radius:8px;
+  overflow:auto;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* Buttons */
+.button{
+  background: linear-gradient(90deg,var(--accent), #0066d6);
+  color: white;
+  padding:10px 16px;
+  border-radius:8px;
+  text-decoration:none;
+  display:inline-block;
+  border:0;
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.button:hover{transform: translateY(-2px); box-shadow:0 10px 26px rgba(11,116,255,0.12)}
+
+/* Footer */
 footer{
-text-align:center;
-padding:20px;
-background:#222;
-color:white;
+  text-align:center;
+  padding:20px;
+  background:#0b1220;
+  color:rgba(255,255,255,0.9);
+}
+
+/* A subtle utility for muted text */
+.muted{color:var(--muted)}
+
+/* Responsive tweaks */
+@media (max-width:640px){
+  header{padding:40px 14px}
+  .avatar{width:72px;height:72px}
+  section{margin:14px;padding:18px}
 }
